@@ -1,57 +1,18 @@
-import React, {useState} from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { Image, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { persistor, store } from "./src/store/store";
+import { StatusBar } from "expo-status-bar";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import MyApp from "./src/component/MyApp";
 
-const logo = {
-  uri: 'https://reactnative.dev/img/tiny_logo.png',
-  width: 64,
-  height: 64,
-};
-
-export default function App() {
-  const [text, setText] = useState('');
+function App() {
   return (
-    <ScrollView>
-    <Text style={{fontSize: 96}}>Scroll me plz</Text>
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Text style={{fontSize: 96}}>If you like</Text>
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Text style={{fontSize: 96}}>Scrolling down</Text>
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Text style={{fontSize: 96}}>What's the best</Text>
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Text style={{fontSize: 96}}>Framework around?</Text>
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Text style={{fontSize: 80}}>React Native</Text>
-  </ScrollView>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <StatusBar backgroundColor="#7e8fa1" translucent={false} />
+          <MyApp />
+      </PersistGate>
+    </Provider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

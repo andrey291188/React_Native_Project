@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "my-app",
-    "slug": "my-app",
+    "name": "react_native_and_ts_project",
+    "slug": "react_native_and_ts_project",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
